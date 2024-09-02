@@ -1,0 +1,56 @@
+
+
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_STUDENTS 5
+
+// Define the structure for student data
+typedef struct {
+    int registerNumber;
+    char name[50];
+    int age;
+    float cgpa;
+} Student;
+
+// Function to get user input for student records
+void getStudentData(Student students[], int numStudents) {
+    for (int i = 0; i < numStudents; i++) {
+        printf("Enter student %d's details:\n", i + 1);
+        printf("Register Number: ");
+        scanf("%d", &students[i].registerNumber);
+        printf("Name: ");
+        scanf("%s", students[i].name);
+        printf("Age: ");
+        scanf("%d", &students[i].age);
+        printf("CGPA: ");
+        scanf("%f", &students[i].cgpa);
+    }
+}
+
+// Function to find the student with the greatest CGPA
+void findTopStudent(Student students[], int numStudents) {
+    int topIndex = 0;
+    for (int i = 1; i < numStudents; i++) {
+        if (students[i].cgpa > students[topIndex].cgpa) {
+            topIndex = i;
+        }
+    }
+    printf("Student with greatest CGPA:\n");
+    printf("Register Number: %d\n", students[topIndex].registerNumber);
+    printf("Name: %s\n", students[topIndex].name);
+    printf("Age: %d\n", students[topIndex].age);
+    printf("CGPA: %.2f\n", students[topIndex].cgpa);
+}
+
+int main() {
+    Student students[MAX_STUDENTS];
+
+    // Get user input for 5 students' records
+    getStudentData(students, MAX_STUDENTS);
+
+    // Find the student with the greatest CGPA
+    findTopStudent(students, MAX_STUDENTS);
+
+    return 0;
+}
