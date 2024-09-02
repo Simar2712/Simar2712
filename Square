@@ -1,0 +1,52 @@
+```
+#include <stdio.h>
+
+// Define the Shape structure with common attributes
+typedef struct {
+    int x, y; // coordinates
+} Shape;
+
+// Define the Square structure with specific attributes
+typedef struct {
+    Shape shape; // embed the Shape structure
+    int side;
+    int area;
+} Square;
+
+// Define the Rectangle structure with specific attributes
+typedef struct {
+    Shape shape; // embed the Shape structure
+    int length;
+    int breadth;
+} Rectangle;
+
+// Function to calculate the area of a Square
+void calculateSquareArea(Square* sq) {
+    sq->area = sq->side * sq->side;
+}
+
+// Function to calculate the area of a Rectangle
+int calculateRectangleArea(Rectangle* rect) {
+    return rect->length * rect->breadth;
+}
+
+int main() {
+    // Create a Square object
+    Square sq;
+    sq.shape.x = 0;
+    sq.shape.y = 0;
+    sq.side = 5;
+    calculateSquareArea(&sq);
+    printf("Square Area: %d\n", sq.area);
+
+    // Create a Rectangle object
+    Rectangle rect;
+    rect.shape.x = 1;
+    rect.shape.y = 1;
+    rect.length = 4;
+    rect.breadth = 6;
+    printf("Rectangle Area: %d\n", calculateRectangleArea(&rect));
+
+    return 0;
+}
+```
