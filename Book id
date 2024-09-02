@@ -1,0 +1,63 @@
+```
+#include <stdio.h>
+
+#define MAX_BOOKS 100
+
+// Function to add a book ID to the list in sorted order
+void addBookID(int bookList[], int *numBooks, int newID) {
+    if (*numBooks < MAX_BOOKS) {
+        int i = *numBooks - 1;
+        while (i >= 0 && bookList[i] > newID) {
+            bookList[i + 1] = bookList[i];
+            i--;
+        }
+        bookList[i + 1] = newID;
+        (*numBooks)++;
+    } else {
+        printf("Book list is full!\n");
+    }
+}
+
+// Function to search for a book ID in the list
+int searchBookID(int bookList[], int numBooks, int targetID) {
+    int left = 0;
+    int right = numBooks - 1;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        if (bookList[mid] == targetID) {
+            return mid; // Book found, return index
+        } else if (bookList[mid] < targetID) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return -1; // Book not found
+}
+
+int main() {
+    int bookList[MAX_BOOKS];
+    int numBooks = 0;
+
+    // Add book IDs to the list
+    addBookID(bookList, &numBooks, 101);
+    addBookID(bookList, &numBooks, 105);
+    addBookID(bookList, &numBooks, 103);
+    addBookID(bookList, &numBooks, 102);
+    addBookID(bookList, &numBooks, 104);
+
+    // Search for a book ID
+    int targetID = 103;
+    int result = searchBookID(bookList, numBooks, targetID);
+
+    if (result != -1) {
+        printf("Book ID %d found at index %d\n", targetID, result);
+    } else {
+        printf("Book ID %d not found\n", targetID);
+    }
+
+    return 0;
+}
+```
+
+`
