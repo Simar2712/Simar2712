@@ -1,0 +1,20 @@
+```
+int main() {
+    int i = 1, sum = 0, n;
+    while (i <= n) {
+        i = i + 1;
+        sum = sum + i;
+    }
+}
+```
+
+Time Complexity:
+
+- The while loop runs from `i = 1` to `i = n`, incrementing `i` by 1 in each iteration.
+- The number of iterations is directly proportional to the value of `n`.
+- Therefore, the time complexity is O(n).
+
+Space Complexity:
+
+- The code uses a fixed amount of space to store the variables `i`, `sum`, and `n`, regardless of the input size `n`.
+- Therefore, the space complexity is O(1), which means the space usage is constant.
