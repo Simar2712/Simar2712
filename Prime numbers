@@ -1,0 +1,41 @@
+```
+#include <stdio.h>
+
+// Function to check if a number is prime
+int isPrime(int num) {
+    if (num <= 1) return 0;
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) return 0;
+    }
+    return 1;
+}
+
+// Function to count two-digit prime numbers
+int countPrimeNumbers(int n) {
+    int digits[10];
+    int count = 0;
+    int i = 0;
+
+    // Extract digits from the number
+    while (n > 0) {
+        digits[i++] = n % 10;
+        n /= 10;
+    }
+
+    // Form two-digit numbers and check for primality
+    for (int j = 0; j < i - 1; j++) {
+        int num = digits[j] * 10 + digits[j + 1];
+        if (isPrime(num)) count++;
+    }
+
+    return count;
+}
+
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    printf("Count of two-digit prime numbers: %d\n", countPrimeNumbers(n));
+    return 0;
+}
+```
